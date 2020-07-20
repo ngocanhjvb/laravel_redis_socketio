@@ -4,6 +4,7 @@ namespace App\Events;
 
 use App\Models\Chat;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -32,13 +33,11 @@ class ChatEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-//        return new PrivateChannel('channel-name');
-        return $this->chats;
+        return new PrivateChannel('global-room');
     }
 
     public function broadcastAs()
     {
-//        return new PrivateChannel('channel-name');
         return "message";
     }
 }

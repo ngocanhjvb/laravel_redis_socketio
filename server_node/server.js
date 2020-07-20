@@ -13,14 +13,14 @@ var redis = new Redis(6379)
 redis.psubscribe('*', function (error, count) {
 
 });
-redis.on('pmessage',function (partner,channel,message) {
+redis.on('pmessage',function (partner,channel,data) {
     console.log(channel)
     console.log(partner)
-    console.log(message)
+    console.log(data)
 
-    message = JSON.parse(message)
+    data = JSON.parse(data)
 
-    io.emit("demo_database_chat:" + message.event, message.data.chats);
+    io.emit(channel, data.data.chats);
 });
 
 
