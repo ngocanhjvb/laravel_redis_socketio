@@ -41,7 +41,7 @@ class ChatController extends Controller
         $data['author'] = auth()->user()->name;
         $chats = Chat::create($data);
         event(new ChatEvent($chats));
-        return redirect()->back();
+        return response()->json($chats);
     }
 
     /**

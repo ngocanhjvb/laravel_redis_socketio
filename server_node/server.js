@@ -14,11 +14,11 @@ redis.psubscribe('*', function (error, count) {
 
 });
 redis.on('pmessage',function (partner,channel,data) {
-    console.log(channel)
-    console.log(partner)
-    console.log(data)
+    console.log(channel);
+    console.log(partner);
+    console.log(data);
 
-    data = JSON.parse(data)
+    data = JSON.parse(data);
 
     io.emit(channel, data.data.chats);
 });
