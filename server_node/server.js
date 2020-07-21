@@ -1,4 +1,4 @@
-var io = require('socket.io')(6001)
+var io = require('socket.io')(6001, {origins: '*:*'})
 console.log('Connected to port 6001');
 io.on('error', function (socket) {
     console.log('error' + socket)
@@ -13,7 +13,7 @@ var redis = new Redis(6379)
 redis.psubscribe('*', function (error, count) {
 
 });
-redis.on('pmessage',function (partner,channel,data) {
+redis.on('pmessage', function (partner, channel, data) {
     console.log(channel);
     console.log(partner);
     console.log(data);
