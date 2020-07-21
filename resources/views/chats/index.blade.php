@@ -33,7 +33,7 @@
         integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA=="
         crossorigin="anonymous"></script>
 <script>
-    var socket = io('http://localhost:6001');
+    var socket = io("{{env('SOCKET_SERVER')}}");
     socket.on('laravel_database_private-global-room', function (data) {
         console.log(data);
         if ($('#' + data.id).length === 0) {
